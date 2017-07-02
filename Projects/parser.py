@@ -44,12 +44,28 @@ def parse(url, type):
     #featuresGroup = soup.findAll("div", {"class": "offer-card__featuresGroup"})
 # featureValue = soup.find("div", {"class": "offer-card__feature-value"})
 # featureName = soup.find("div", {"class": "offer-card__feature-name"})
-    items = soup.findAll("div", {"class": "offer-card__feature-name"})
-                #Вот этот цикл
-    for i in items:
-        featureValue = soup.find("div", {"class": "offer-card__feature-value"})
-        featureName = soup.find("div", {"class": "offer-card__feature-name"})
-        desc[' '.join(featureName)] = ' '.join(featureValue)
+    name = soup.findAll("div", {"class": "offer-card__feature-name"})
+    value = soup.findAll("div", {"class": "offer-card__feature-value"})
+    for i in name:
+        for e in value:
+            print (e)
+            featureName = i
+            featureValue = e
+            desc[' '.join(featureName)] = ' '.join(featureValue)
+            del value[0]
+            break
+
+
+#----------------------------------
+    #for i in items:
+    #    featureValue = soup.find("div", {"class": "offer-card__feature-value"})
+    #    featureName = soup.find("div", {"class": "offer-card__feature-name"})
+    #    desc[' '.join(featureName)] = ' '.join(featureValue)
+    #    print (i)
+#-----------------------------------
+        #featValue = soup.findNext("div", {"class": "offer-card__feature-value"})
+        #featName = soup.findNext("div", {"class": "offer-card__feature-name"})
+        #desc[' '.join(featName)] = ' '.join(featValue)
 
 # -------------------------------------------------------------------------------------------------------
     return desc
